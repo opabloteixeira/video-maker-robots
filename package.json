@@ -1,0 +1,23 @@
+{
+  "name": "robot",
+  "version": "1.0.0",
+  "description": "Project for automated video editing open source",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opabloteixeira/robot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opabloteixeira/robot/issues"
+  },
+  "homepage": "https://github.com/opabloteixeira/robot#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.9",
+    "sbd": "^1.0.14"
+  }
+}
