@@ -1,4 +1,7 @@
 const readline = require('readline-sync');
+const robots = {
+  text: require("./robots/text")
+}
 
 function start(){
 
@@ -6,6 +9,7 @@ function start(){
   content.searchTerm = askAndReturnSearchTerm();
   content.prefix = askAndReturnPrefix();
 
+  robots.text(content);
   function askAndReturnSearchTerm(){
     return readline.question("Qual sua pergunta para os robos? ");
   }	
@@ -20,6 +24,6 @@ function start(){
 
   console.log(content)
 }
- 
+
   start()
 
