@@ -5,16 +5,15 @@ const sentenceBoundaryDetection = require('sbd')
 async function robot(content) {
 
     await fetchContentFromWikipedia(content)
-   // sanitizeContent(content)
-   // breakContentIntoSentences(content)
+    sanitizeContent(content)
+    breakContentIntoSentences(content)
 
     async function fetchContentFromWikipedia(content) {
         const algorithmiaAuthenticated = algorithmia(algorithmiaApiKey)
         const wikipediaAlgorithm = algorithmiaAuthenticated.algo('web/WikipediaParser/0.1.2')
         const wikipediaResponde = await wikipediaAlgorithm.pipe(content.searchTerm)
         const wikipediaContent = wikipediaResponde.get()
-        console.log(wikipediaContent);
-       // content.sourceContentOriginal = wikipediaContent.content
+        content.sourceContentOriginal = wikipediaContent.content;
     }
 
 
@@ -28,15 +27,15 @@ async function robot(content) {
         content.sourceContentSanitized = withoutDatesInParentheses
 
         function removeBlankLinesAndMarkdown(text) {
-            const allLines = text.split('\n')
-            const withoutBlankLinesAndMarkdown = allLines.filter((line) => {
-            if (line.trim().length === 0 || line.trim().startsWith('=')) {
-                return false
-            }
+            const allLines = text.split('\n') //transforma o texto em linhas
+            const withoutBlankLinesAndMarkdown = allLines.filter((line) => { //Percorre cada linha
+                if (line.trim().length === 0 || line.trim().startsWith('=')) { //Elimina linhas vazias e que começam com caractere '='
+                    return false
+                }
 
-            return true
+                return true
             })
-            return withoutBlankLinesAndMarkdown.join(' ')
+            return withoutBlankLinesAndMarkdown.join(' ') // junta todas as linha em um texto só separado com espaço
         }
     }
 
